@@ -1,0 +1,11 @@
+.heading {
+    margin-bottom: 8px;
+}
+
+.menuContainer {
+    padding: 16px 24px;
+    background-color: var(--surface-color);
+    box-shadow: var(--box-shadow-medium);
+    border-radius: var(--border-radius);
+    border: 1px solid var(--border-color);
+}
