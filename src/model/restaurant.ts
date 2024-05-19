@@ -7,3 +7,7 @@ export type Restaurant = {
     pbr: number
     br_mobitel_objekt: string
 }
+
+export type RestaurantDetails = Omit<Restaurant, 'pbr'> & {
+    mjesto: Place
+}
