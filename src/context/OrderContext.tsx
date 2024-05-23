@@ -1,9 +1,6 @@
+import { OrderItem } from '@/model/order'
 import { createContext, PropsWithChildren, useContext, useState } from 'react'
 
-type OrderItem = {
-    id_stavka: string
-    kolicina: number
-}
 type OrderContextType = {
     orderItems: OrderItem[]
     setOrderItems: React.Dispatch<React.SetStateAction<OrderItem[]>>

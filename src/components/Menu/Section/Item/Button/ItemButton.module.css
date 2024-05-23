@@ -1,0 +1,27 @@
+.button {
+    font-size: 16px;
+    font-weight: 500;
+    font-family: inherit;
+    border-radius: var(--border-radius);
+    padding: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    box-shadow: var(--box-shadow-light);
+    min-width: 80px;
+}
+
+.button:hover {
+    opacity: 0.8;
+}
+
+.addButton {
+    background-color: var(--primary-color);
+    color: var(--surface-color);
+    border: 1px solid var(--primary-color-light);
+}
+
+.removeButton {
+    background-color: var(--text-color);
+    color: var(--surface-color);
+    border: 1px solid var(--text-color-secondary);
+}
