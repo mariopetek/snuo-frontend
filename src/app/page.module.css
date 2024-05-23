@@ -6,8 +6,12 @@
     align-items: center;
 }
 
+.container {
+    max-width: 900px;
+    width: 100%;
+}
+
 .mainHeading {
-    margin-bottom: 18px;
     line-height: 1;
 }
 
@@ -15,9 +19,15 @@
     line-height: 1;
 }
 
-.container {
-    max-width: 900px;
-    width: 100%;
+.foodIconContainer {
+    padding: 18px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.foodIcon {
+    font-size: 54px;
 }
 
 .restaurantLink {
