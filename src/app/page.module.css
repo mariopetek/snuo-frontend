@@ -5,3 +5,45 @@
     flex-direction: column;
     align-items: center;
 }
+
+.mainHeading {
+    margin-bottom: 18px;
+    line-height: 1;
+}
+
+.secondaryHeading {
+    line-height: 1;
+}
+
+.container {
+    max-width: 900px;
+    width: 100%;
+}
+
+.restaurantLink {
+    display: block;
+    padding: 12px;
+    border: 1px solid var(--border-color);
+    transition: all 0.2s ease-in-out;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow-light);
+    margin: 12px 0;
+    font-size: 18px;
+    font-weight: 600;
+    background-color: var(--surface-color);
+}
+
+.restaurantLink:hover {
+    transform: translateY(-2px);
+
+    box-shadow: var(--box-shadow-medium);
+}
+
+.restaurantInfo {
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.restaurantInfo > span {
+    font-weight: 500;
+}

@@ -1,9 +1,3 @@
 .menuSection {
     margin-bottom: 16px;
 }
-
-.separator {
-    height: 1px;
-    background-color: var(--text-color-secondary);
-    margin: 8px 0;
-}
