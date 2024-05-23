@@ -44,7 +44,14 @@ export default function ItemButton({ item }: ItemButtonProps) {
         } else {
             setOrderItems([
                 ...orderItems,
-                { id_stavka: item.id_stavka, kolicina: 1 }
+                {
+                    id_stavka: item.id_stavka,
+                    naziv_stavka: item.naziv_stavka,
+                    cijena: item.cijena,
+                    kategorija: item.kategorija,
+                    id_objekt: item.id_objekt,
+                    kolicina: 1
+                }
             ])
         }
     }

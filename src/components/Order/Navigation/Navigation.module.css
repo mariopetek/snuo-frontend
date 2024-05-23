@@ -1,0 +1,41 @@
+.navigationContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.navigationArrow {
+    font-family: inherit;
+    font-size: 22px;
+    font-weight: 700;
+    padding: 6px 12px;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    box-shadow: var(--box-shadow-light);
+    margin: 0 6px;
+    border: 1px solid var(--border-color);
+    background-color: var(--surface-color);
+}
+
+.navigationArrow:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--box-shadow-medium);
+}
+
+.dot,
+.activeDot {
+    height: 10px;
+    width: 10px;
+    background-color: var(--text-color);
+    border-radius: 50%;
+    display: inline-block;
+    margin: 0 6px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+.activeDot {
+    transform: scale(1.5);
+}

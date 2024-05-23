@@ -11,14 +11,6 @@
     width: 100%;
 }
 
-.mainHeading {
-    line-height: 1;
-}
-
-.secondaryHeading {
-    line-height: 1;
-}
-
 .foodIconContainer {
     padding: 18px 0;
     display: flex;

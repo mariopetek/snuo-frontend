@@ -16,17 +16,11 @@ export default async function HomePage() {
     return (
         <main className={styles.main}>
             <div className={styles.container}>
-                <h1 className={styles.mainHeading}>
-                    Sustav za naručivanje u ugostiteljskim objektima
-                </h1>
+                <h1>Sustav za naručivanje u ugostiteljskim objektima</h1>
                 <div className={styles.foodIconContainer}>
                     <GiForkKnifeSpoon className={styles.foodIcon} />
                 </div>
-
-                <h2 className={styles.secondaryHeading}>
-                    Odaberite ugostiteljski objekt
-                </h2>
-
+                <h2>Odaberi ugostiteljski objekt</h2>
                 {restaurants.map(restaurant => (
                     <Link
                         href={`/${restaurant.id_objekt}`}

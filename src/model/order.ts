@@ -1,4 +1,5 @@
-export type OrderItem = {
-    id_stavka: string
+import { Item } from './item'
+
+export type OrderItem = Item & {
     kolicina: number
 }
