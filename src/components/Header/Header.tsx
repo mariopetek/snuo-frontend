@@ -27,19 +27,23 @@ export default function Header({ restaurant }: HeaderProps) {
             </div>
             <div className={styles.navLinks}>
                 <span className={styles.homeLink}>
-                    <Link href="/">
+                    <Link href="/" title="Početna">
                         <FaHome />
                     </Link>
                 </span>
 
                 <span className={styles.linkWrapper}>
-                    <Link href={`/${restaurant.id_objekt}`}>Ponuda</Link>
+                    <Link href={`/${restaurant.id_objekt}`} title="Ponuda">
+                        Ponuda
+                    </Link>
                     {pathname === `/${restaurant.id_objekt}` ? (
                         <span className={styles.activeIndicator}></span>
                     ) : null}
                 </span>
                 <span className={styles.linkWrapper}>
-                    <Link href={`/${restaurant.id_objekt}/order`}>
+                    <Link
+                        href={`/${restaurant.id_objekt}/order`}
+                        title="Narudžba">
                         Narudžba
                     </Link>
                     {pathname === `/${restaurant.id_objekt}/order` ? (

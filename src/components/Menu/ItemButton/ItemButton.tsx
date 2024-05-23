@@ -1,13 +1,71 @@
-import React from 'react'
+import { useOrderContext } from '@/context/OrderContext'
+import { Item } from '@/model/item'
 
-function AddButton() {
-    return <button>Dodaj</button>
+import styles from './ItemButton.module.css'
+
+type ButtonProps = {
+    handleButtonClick: () => void
 }
 
-function RemoveButton() {
-    return <button>Ukloni</button>
+function AddButton({ handleButtonClick }: ButtonProps) {
+    return (
+        <button
+            onClick={handleButtonClick}
+            className={`${styles.button} ${styles.addButton}`}
+            title="Dodaj stavku u narudžbu">
+            Dodaj
+        </button>
+    )
 }
 
-export default function ItemButton() {
-    return <div>Gumb</div>
+function RemoveButton({ handleButtonClick }: ButtonProps) {
+    return (
+        <button
+            onClick={handleButtonClick}
+            className={`${styles.button} ${styles.removeButton}`}
+            title="Ukloni stavku iz narudžbe">
+            Ukloni
+        </button>
+    )
+}
+
+type ItemButtonProps = {
+    item: Item
+}
+
+export default function ItemButton({ item }: ItemButtonProps) {
+    const { orderItems, setOrderItems } = useOrderContext()
+
+    const handleButtonClick = () => {
+        if (isAdded()) {
+            setOrderItems(
+                orderItems.filter(
+                    orderItem => orderItem.id_stavka !== item.id_stavka
+                )
+            )
+        } else {
+            setOrderItems([
+                ...orderItems,
+                {
+                    id_stavka: item.id_stavka,
+                    naziv_stavka: item.naziv_stavka,
+                    cijena: item.cijena,
+                    kategorija: item.kategorija,
+                    id_objekt: item.id_objekt,
+                    kolicina: 1
+                }
+            ])
+        }
+    }
+
+    const isAdded = () => {
+        return orderItems.some(
+            orderItem => orderItem.id_stavka === item.id_stavka
+        )
+    }
+    return isAdded() ? (
+        <RemoveButton handleButtonClick={handleButtonClick} />
+    ) : (
+        <AddButton handleButtonClick={handleButtonClick} />
+    )
 }

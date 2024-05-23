@@ -25,7 +25,8 @@ export default async function HomePage() {
                     <Link
                         href={`/${restaurant.id_objekt}`}
                         key={restaurant.id_objekt}
-                        className={styles.restaurantLink}>
+                        className={styles.restaurantLink}
+                        title={restaurant.naziv_objekt}>
                         {restaurant.naziv_objekt}
                         <Separator />
                         <div className={styles.restaurantInfo}>

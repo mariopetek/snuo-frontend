@@ -2,7 +2,7 @@
 import { Item } from '@/model/item'
 
 import styles from './MenuItem.module.css'
-import ItemButton from './Button/ItemButton'
+import ItemButton from '../../ItemButton/ItemButton'
 
 type MenuItemProps = {
     item: Item
