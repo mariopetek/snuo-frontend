@@ -3,6 +3,7 @@
 import { RestaurantDetails } from '@/model/restaurant'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
+import { FaHome } from 'react-icons/fa'
 
 import styles from './Header.module.css'
 
@@ -25,6 +26,12 @@ export default function Header({ restaurant }: HeaderProps) {
                 </span>
             </div>
             <div className={styles.navLinks}>
+                <span className={styles.homeLink}>
+                    <Link href="/">
+                        <FaHome />
+                    </Link>
+                </span>
+
                 <span className={styles.linkWrapper}>
                     <Link href={`/${restaurant.id_objekt}`}>Ponuda</Link>
                     {pathname === `/${restaurant.id_objekt}` ? (

@@ -32,10 +32,33 @@
     font-weight: 600;
 }
 
+.homeLink {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease-in-out;
+}
+
+.homeLink:hover {
+    opacity: 0.8;
+}
+
+.homeLink > a {
+    font-size: 20px;
+}
+
 .linkWrapper {
     display: flex;
     flex-direction: column;
     height: 28px;
+}
+
+.linkWrapper > a {
+    transition: all 0.2s ease-in-out;
+}
+
+.linkWrapper > a:hover {
+    opacity: 0.8;
 }
 
 .activeIndicator {
