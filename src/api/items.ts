@@ -23,3 +23,22 @@ export async function getRestaurantMainDishesAndAppetizers(
         mainDishes
     }
 }
+
+export async function getRestaurantSideDishesAndSauces(restaurantId: string) {
+    const response = await fetch(
+        `${process.env.API_URL}${ITEMS_URL}/${restaurantId}/side-dishes-and-sauces`
+    )
+    const items = (await response.json()) as Item[]
+
+    const sideDishes = items.filter(
+        item => item.kategorija.toString() === Category[Category.PRILOZI]
+    )
+
+    const sauces = items.filter(
+        item => item.kategorija.toString() === Category[Category.UMACI]
+    )
+    return {
+        sideDishes,
+        sauces
+    }
+}

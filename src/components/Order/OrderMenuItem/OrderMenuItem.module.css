@@ -1,0 +1,21 @@
+.itemContainer {
+    margin-bottom: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.itemInfo {
+    display: flex;
+    flex-direction: column;
+}
+
+.itemInfo > .itemName {
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.itemInfo > .itemPrice {
+    color: var(--text-color-secondary);
+    font-size: 14px;
+}

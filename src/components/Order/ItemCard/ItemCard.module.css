@@ -1,0 +1,42 @@
+.cardContainer {
+    padding: 16px 24px;
+    background-color: var(--surface-color);
+    box-shadow: var(--box-shadow-medium);
+    border-radius: var(--border-radius);
+    border: 1px solid var(--border-color);
+    margin-top: 12px;
+}
+
+.itemInfoContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.quantityButton {
+    font-family: inherit;
+    font-size: 18px;
+    font-weight: 700;
+    padding: 6px 12px;
+    width: 40px;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    box-shadow: var(--box-shadow-light);
+    margin: 0 6px;
+    border: 1px solid var(--border-color);
+    background-color: var(--surface-color);
+}
+
+.quantityButton:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--box-shadow-medium);
+}
+
+.quantity {
+    font-weight: 500;
+    font-size: 18px;
+    display: inline-block;
+    width: 30px;
+    text-align: center;
+}

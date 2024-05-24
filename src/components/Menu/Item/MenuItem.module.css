@@ -8,7 +8,6 @@
 .itemInfo {
     display: flex;
     flex-direction: column;
-    margin-right: 12px;
 }
 
 .itemInfo > .itemName {
@@ -19,16 +18,4 @@
 .itemInfo > .itemPrice {
     color: var(--text-color-secondary);
     font-size: 14px;
-}
-
-.connector {
-    height: 1px;
-    background-color: var(--border-color);
-    flex: 1;
-}
-
-@media (max-width: 500px) {
-    .connector {
-        display: none;
-    }
 }

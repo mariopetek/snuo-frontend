@@ -2,7 +2,8 @@
 import { Item } from '@/model/item'
 
 import styles from './MenuItem.module.css'
-import ItemButton from '../../ItemButton/ItemButton'
+import ItemButton from '../ItemButton/ItemButton'
+import Connector from '@/components/Connector/Connector'
 
 type MenuItemProps = {
     item: Item
@@ -10,12 +11,12 @@ type MenuItemProps = {
 
 export default function MenuItem({ item }: MenuItemProps) {
     return (
-        <div key={item.id_stavka} className={styles.itemContainer}>
+        <div className={styles.itemContainer}>
             <div className={styles.itemInfo}>
                 <span className={styles.itemName}>{item.naziv_stavka}</span>
                 <span className={styles.itemPrice}>{item.cijena}€</span>
             </div>
-            <div className={styles.connector}></div>
+            <Connector />
             <ItemButton item={item} />
         </div>
     )

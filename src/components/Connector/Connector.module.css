@@ -1,0 +1,12 @@
+.connector {
+    height: 1px;
+    background-color: var(--border-color);
+    flex: 1;
+    margin-left: 12px;
+}
+
+@media (max-width: 500px) {
+    .connector {
+        display: none;
+    }
+}

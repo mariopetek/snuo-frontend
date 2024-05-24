@@ -19,9 +19,3 @@
     color: var(--surface-color);
     border: 1px solid var(--primary-color-light);
 }
-
-.removeButton {
-    background-color: var(--text-color);
-    color: var(--surface-color);
-    border: 1px solid var(--text-color-secondary);
-}

@@ -1,33 +1,7 @@
+import AddButton from '@/components/AddButton/AddButton'
+import RemoveButton from '@/components/RemoveButton/RemoveButton'
 import { useOrderContext } from '@/context/OrderContext'
 import { Item } from '@/model/item'
-
-import styles from './ItemButton.module.css'
-
-type ButtonProps = {
-    handleButtonClick: () => void
-}
-
-function AddButton({ handleButtonClick }: ButtonProps) {
-    return (
-        <button
-            onClick={handleButtonClick}
-            className={`${styles.button} ${styles.addButton}`}
-            title="Dodaj stavku u narudžbu">
-            Dodaj
-        </button>
-    )
-}
-
-function RemoveButton({ handleButtonClick }: ButtonProps) {
-    return (
-        <button
-            onClick={handleButtonClick}
-            className={`${styles.button} ${styles.removeButton}`}
-            title="Ukloni stavku iz narudžbe">
-            Ukloni
-        </button>
-    )
-}
 
 type ItemButtonProps = {
     item: Item
