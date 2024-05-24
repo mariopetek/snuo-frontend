@@ -6,6 +6,9 @@ import { Item } from '@/model/item'
 import Connector from '@/components/Connector/Connector'
 import RemoveButton from '@/components/RemoveButton/RemoveButton'
 import OrderMenuSection from '../OrderMenuSection/OrderMenuSection'
+import OrderAddedSection from '../OrderAddedSection/OrderAddedSection'
+import PlusButton from '../PlusButton/PlusButton'
+import MinusButton from '../MinusButton/MinusButton'
 
 type ItemCardProps = {
     cardsNum: number
@@ -28,6 +31,41 @@ export default function ItemCard({
     sauces
 }: ItemCardProps) {
     const { orderItems, setOrderItems } = useOrderContext()
+
+    const handlePlusButtonClick = () => {
+        setOrderItems(
+            orderItems.map(item => {
+                if (item.id_stavka === orderItem.id_stavka) {
+                    return {
+                        ...item,
+                        kolicina:
+                            item.kolicina === MAX_QUANTITY
+                                ? item.kolicina
+                                : item.kolicina + 1
+                    }
+                }
+                return item
+            })
+        )
+    }
+
+    const handleMinusButtonClick = () => {
+        setOrderItems(
+            orderItems.map(item => {
+                if (item.id_stavka === orderItem.id_stavka) {
+                    return {
+                        ...item,
+                        kolicina:
+                            item.kolicina === MIN_QUANTITY
+                                ? item.kolicina
+                                : item.kolicina - 1
+                    }
+                }
+                return item
+            })
+        )
+    }
+
     return (
         <>
             <div className={styles.cardContainer}>
@@ -51,61 +89,42 @@ export default function ItemCard({
                         }}
                     />
                 </div>
-
                 <div className={styles.quantityContainer}>
                     <span>Količina:</span>
-                    <button
-                        className={styles.quantityButton}
-                        onClick={() => {
-                            setOrderItems(
-                                orderItems.map(item => {
-                                    if (
-                                        item.id_stavka === orderItem.id_stavka
-                                    ) {
-                                        return {
-                                            ...item,
-                                            kolicina:
-                                                item.kolicina === MAX_QUANTITY
-                                                    ? item.kolicina
-                                                    : item.kolicina + 1
-                                        }
-                                    }
-                                    return item
-                                })
-                            )
-                        }}>
-                        +
-                    </button>
+                    <PlusButton handleButtonClick={handlePlusButtonClick} />
                     <span className={styles.quantity}>
                         {orderItem.kolicina}
                     </span>
-                    <button
-                        className={styles.quantityButton}
-                        onClick={() => {
-                            setOrderItems(
-                                orderItems.map(item => {
-                                    if (
-                                        item.id_stavka === orderItem.id_stavka
-                                    ) {
-                                        return {
-                                            ...item,
-                                            kolicina:
-                                                item.kolicina === MIN_QUANTITY
-                                                    ? item.kolicina
-                                                    : item.kolicina - 1
-                                        }
-                                    }
-                                    return item
-                                })
-                            )
-                        }}>
-                        -
-                    </button>
+                    <MinusButton handleButtonClick={handleMinusButtonClick} />
                 </div>
+                {orderItems[cardIdx].prilozi.length === 0 ? null : (
+                    <OrderAddedSection
+                        sectionName="Dodani prilozi"
+                        items={orderItems[cardIdx].prilozi}
+                        cardIdx={cardIdx}
+                    />
+                )}
+
+                {orderItems[cardIdx].umaci.length === 0 ? null : (
+                    <OrderAddedSection
+                        sectionName="Dodani umaci"
+                        items={orderItems[cardIdx].umaci}
+                        cardIdx={cardIdx}
+                    />
+                )}
             </div>
-            <div className={styles.cardContainer}>
-                <OrderMenuSection sectionName="Prilozi" items={sideDishes} />
-                <OrderMenuSection sectionName="Umaci" items={sauces} />
+            <div
+                className={`${styles.cardContainer} ${styles.addonsContainer}`}>
+                <OrderMenuSection
+                    sectionName="Prilozi"
+                    items={sideDishes}
+                    cardIdx={cardIdx}
+                />
+                <OrderMenuSection
+                    sectionName="Umaci"
+                    items={sauces}
+                    cardIdx={cardIdx}
+                />
             </div>
         </>
     )

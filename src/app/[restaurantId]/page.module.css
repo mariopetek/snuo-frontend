@@ -8,4 +8,7 @@
     box-shadow: var(--box-shadow-medium);
     border-radius: var(--border-radius);
     border: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
 }

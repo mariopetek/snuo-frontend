@@ -1,0 +1,19 @@
+.minusButton {
+    font-family: inherit;
+    font-size: 18px;
+    font-weight: 700;
+    padding: 6px 12px;
+    width: 40px;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    box-shadow: var(--box-shadow-light);
+    margin: 0 6px;
+    border: 1px solid var(--border-color);
+    background-color: var(--surface-color);
+}
+
+.minusButton:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--box-shadow-medium);
+}

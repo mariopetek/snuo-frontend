@@ -26,7 +26,9 @@ export default function ItemButton({ item }: ItemButtonProps) {
                     cijena: item.cijena,
                     kategorija: item.kategorija,
                     id_objekt: item.id_objekt,
-                    kolicina: 1
+                    kolicina: 1,
+                    prilozi: [],
+                    umaci: []
                 }
             ])
         }

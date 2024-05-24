@@ -1,11 +1,11 @@
 import { Item } from './item'
 
-type OrderAddon = Item & {
+export type OrderAddon = Item & {
     kolicina: number
 }
 
 export type OrderItem = Item & {
     kolicina: number
-    prilozi?: OrderAddon[]
-    umaci?: OrderAddon[]
+    prilozi: OrderAddon[]
+    umaci: OrderAddon[]
 }
