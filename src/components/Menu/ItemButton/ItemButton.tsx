@@ -29,6 +29,7 @@ export default function ItemButton({ item }: ItemButtonProps) {
                     kategorija: item.kategorija,
                     id_objekt: item.id_objekt,
                     kolicina: 1,
+                    ukupnaCijena: item.cijena,
                     prilozi: [],
                     umaci: []
                 }

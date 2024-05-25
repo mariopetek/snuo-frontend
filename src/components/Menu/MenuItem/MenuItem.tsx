@@ -13,7 +13,9 @@ export default function MenuItem({ item }: MenuItemProps) {
         <div className={styles.itemContainer}>
             <div className={styles.itemInfo}>
                 <span className={styles.itemName}>{item.naziv_stavka}</span>
-                <span className={styles.itemPrice}>{item.cijena}€</span>
+                <span className={styles.itemPrice}>
+                    {Number(item.cijena).toFixed(2)}€
+                </span>
             </div>
             <Connector />
             <ItemButton item={item} />

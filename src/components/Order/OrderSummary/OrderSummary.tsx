@@ -27,8 +27,8 @@ export default function OrderSummary({
     const { orderItems, setOrderItems } = useOrderContext()
 
     const handleRemoveButtonClick = () => {
-        setOrderItems(
-            orderItems.filter(
+        setOrderItems(prevOrderItems =>
+            prevOrderItems.filter(
                 item => item.id_stavka !== orderItems[cardIdx].id_stavka
             )
         )
@@ -38,15 +38,20 @@ export default function OrderSummary({
     }
 
     const handlePlusButtonClick = () => {
-        setOrderItems(
-            orderItems.map(item => {
+        setOrderItems(prevOrderItems =>
+            prevOrderItems.map(item => {
                 if (item.id_stavka === orderItems[cardIdx].id_stavka) {
                     return {
                         ...item,
                         kolicina:
                             item.kolicina === MAX_QUANTITY
                                 ? item.kolicina
-                                : item.kolicina + 1
+                                : item.kolicina + 1,
+                        ukupnaCijena:
+                            item.kolicina === MAX_QUANTITY
+                                ? item.ukupnaCijena
+                                : Number(item.ukupnaCijena) +
+                                  Number(item.cijena)
                     }
                 }
                 return item
@@ -55,15 +60,20 @@ export default function OrderSummary({
     }
 
     const handleMinusButtonClick = () => {
-        setOrderItems(
-            orderItems.map(item => {
+        setOrderItems(prevOrderItems =>
+            prevOrderItems.map(item => {
                 if (item.id_stavka === orderItems[cardIdx].id_stavka) {
                     return {
                         ...item,
                         kolicina:
                             item.kolicina === MIN_QUANTITY
                                 ? item.kolicina
-                                : item.kolicina - 1
+                                : item.kolicina - 1,
+                        ukupnaCijena:
+                            item.kolicina === MIN_QUANTITY
+                                ? item.cijena
+                                : Number(item.ukupnaCijena) -
+                                  Number(item.cijena)
                     }
                 }
                 return item
@@ -77,7 +87,12 @@ export default function OrderSummary({
                 <div className={styles.itemInfoContainer}>
                     <div className={styles.itemInfo}>
                         <h2>{orderItems[cardIdx].naziv_stavka}</h2>
-                        <div>{orderItems[cardIdx].cijena}€</div>
+                        <div>
+                            {Number(orderItems[cardIdx].ukupnaCijena).toFixed(
+                                2
+                            )}
+                            €
+                        </div>
                     </div>
                     <Connector />
                     <RemoveButton handleButtonClick={handleRemoveButtonClick} />

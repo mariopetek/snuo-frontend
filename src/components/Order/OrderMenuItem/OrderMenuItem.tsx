@@ -14,7 +14,7 @@ type OrderMenuItemProps = {
 export default function OrderMenuItem({ item, cardIdx }: OrderMenuItemProps) {
     const { setOrderItems } = useOrderContext()
 
-    const handleButtonClick = () => {
+    const handleAddButtonClick = () => {
         setOrderItems(prevItems => {
             return prevItems.map((orderItem, idx) => {
                 if (idx === cardIdx) {
@@ -28,7 +28,8 @@ export default function OrderMenuItem({ item, cardIdx }: OrderMenuItemProps) {
                                 ...orderItem.prilozi,
                                 {
                                     ...item,
-                                    kolicina: 1
+                                    kolicina: 1,
+                                    ukupnaCijena: item.cijena
                                 }
                             ]
                         }
@@ -41,7 +42,8 @@ export default function OrderMenuItem({ item, cardIdx }: OrderMenuItemProps) {
                                 ...orderItem.umaci,
                                 {
                                     ...item,
-                                    kolicina: 1
+                                    kolicina: 1,
+                                    ukupnaCijena: item.cijena
                                 }
                             ]
                         }
@@ -58,10 +60,12 @@ export default function OrderMenuItem({ item, cardIdx }: OrderMenuItemProps) {
         <div className={styles.itemContainer}>
             <div className={styles.itemInfo}>
                 <span className={styles.itemName}>{item.naziv_stavka}</span>
-                <span className={styles.itemPrice}>{item.cijena}€</span>
+                <span className={styles.itemPrice}>
+                    {Number(item.cijena).toFixed(2)}€
+                </span>
             </div>
             <Connector />
-            <AddButton handleButtonClick={handleButtonClick} />
+            <AddButton handleButtonClick={handleAddButtonClick} />
         </div>
     )
 }

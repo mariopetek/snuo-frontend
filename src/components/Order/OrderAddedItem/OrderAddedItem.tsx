@@ -11,6 +11,9 @@ type OrderAddedItemProps = {
     cardIdx: number
 }
 
+const MAX_QUANTITY = 10
+const MIN_QUANTITY = 1
+
 export default function OrderAddedItem({ item, cardIdx }: OrderAddedItemProps) {
     const { setOrderItems } = useOrderContext()
 
@@ -47,9 +50,14 @@ export default function OrderAddedItem({ item, cardIdx }: OrderAddedItemProps) {
                                 return {
                                     ...orderAddon,
                                     kolicina:
-                                        item.kolicina === 10
+                                        item.kolicina === MAX_QUANTITY
                                             ? item.kolicina
-                                            : item.kolicina + 1
+                                            : item.kolicina + 1,
+                                    ukupnaCijena:
+                                        item.kolicina === MAX_QUANTITY
+                                            ? item.ukupnaCijena
+                                            : Number(item.ukupnaCijena) +
+                                              Number(item.cijena)
                                 }
                             } else {
                                 return orderAddon
@@ -60,9 +68,14 @@ export default function OrderAddedItem({ item, cardIdx }: OrderAddedItemProps) {
                                 return {
                                     ...orderAddon,
                                     kolicina:
-                                        item.kolicina === 10
+                                        item.kolicina === MAX_QUANTITY
                                             ? item.kolicina
-                                            : item.kolicina + 1
+                                            : item.kolicina + 1,
+                                    ukupnaCijena:
+                                        item.kolicina === MAX_QUANTITY
+                                            ? item.ukupnaCijena
+                                            : Number(item.ukupnaCijena) +
+                                              Number(item.cijena)
                                 }
                             } else {
                                 return orderAddon
@@ -87,9 +100,14 @@ export default function OrderAddedItem({ item, cardIdx }: OrderAddedItemProps) {
                                 return {
                                     ...orderAddon,
                                     kolicina:
-                                        item.kolicina === 1
+                                        item.kolicina === MIN_QUANTITY
                                             ? item.kolicina
-                                            : item.kolicina - 1
+                                            : item.kolicina - 1,
+                                    ukupnaCijena:
+                                        item.kolicina === MIN_QUANTITY
+                                            ? item.cijena
+                                            : Number(item.ukupnaCijena) -
+                                              Number(item.cijena)
                                 }
                             } else {
                                 return orderAddon
@@ -100,9 +118,14 @@ export default function OrderAddedItem({ item, cardIdx }: OrderAddedItemProps) {
                                 return {
                                     ...orderAddon,
                                     kolicina:
-                                        item.kolicina === 1
+                                        item.kolicina === MIN_QUANTITY
                                             ? item.kolicina
-                                            : item.kolicina - 1
+                                            : item.kolicina - 1,
+                                    ukupnaCijena:
+                                        item.kolicina === MIN_QUANTITY
+                                            ? item.cijena
+                                            : Number(item.ukupnaCijena) -
+                                              Number(item.cijena)
                                 }
                             } else {
                                 return orderAddon
@@ -125,7 +148,9 @@ export default function OrderAddedItem({ item, cardIdx }: OrderAddedItemProps) {
                         <span className={styles.itemName}>
                             {item.naziv_stavka}
                         </span>
-                        <span className={styles.itemPrice}>{item.cijena}€</span>
+                        <span className={styles.itemPrice}>
+                            {Number(item.ukupnaCijena).toFixed(2)}€
+                        </span>
                     </div>
                     <Connector />
                     <RemoveButton handleButtonClick={handleRemoveButtonClick} />
