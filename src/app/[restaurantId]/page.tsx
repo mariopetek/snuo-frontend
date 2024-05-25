@@ -1,7 +1,7 @@
 import { getRestaurantMainDishesAndAppetizers } from '@/api/items'
 
 import styles from './page.module.css'
-import MenuSection from '@/components/Menu/Section/MenuSection'
+import MenuSection from '@/components/Menu/MenuSection/MenuSection'
 
 type RestaurantMenuPageProps = {
     params: {

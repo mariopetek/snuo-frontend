@@ -1,3 +1,5 @@
+'use client'
+
 import AddButton from '@/components/AddButton/AddButton'
 import RemoveButton from '@/components/RemoveButton/RemoveButton'
 import { useOrderContext } from '@/context/OrderContext'

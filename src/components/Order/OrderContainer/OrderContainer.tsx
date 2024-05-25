@@ -1,9 +1,12 @@
 'use client'
+
 import { useOrderContext } from '@/context/OrderContext'
-import ItemCard from '../ItemCard/ItemCard'
 import { useState } from 'react'
 import Navigation from '../Navigation/Navigation'
 import { Item } from '@/model/item'
+import OrderSummary from '../OrderSummary/OrderSummary'
+
+import styles from './OrderContainer.module.css'
 
 type OrderContainerProps = {
     sideDishes: Item[]
@@ -19,9 +22,9 @@ export default function OrderContainer({
     const cardsNum = orderItems.length
 
     return (
-        <div>
+        <div className={styles.orderContainer}>
             {cardsNum === 0 ? (
-                <span>Nema stavki u narudžbi</span>
+                <p className={styles.noItemsText}>Nema stavki u narudžbi</p>
             ) : (
                 <>
                     <Navigation
@@ -29,11 +32,9 @@ export default function OrderContainer({
                         cardIdx={cardIdx}
                         setCardIdx={setCardIdx}
                     />
-                    <ItemCard
-                        cardsNum={cardsNum}
+                    <OrderSummary
                         cardIdx={cardIdx}
                         setCardIdx={setCardIdx}
-                        orderItem={orderItems[cardIdx]}
                         sideDishes={sideDishes}
                         sauces={sauces}
                     />

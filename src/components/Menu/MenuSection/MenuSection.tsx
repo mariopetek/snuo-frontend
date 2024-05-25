@@ -1,5 +1,5 @@
 import { Item } from '@/model/item'
-import MenuItem from '../Item/MenuItem'
+import MenuItem from '../MenuItem/MenuItem'
 import Separator from '@/components/Separator/Separator'
 
 import styles from './MenuSection.module.css'

@@ -1,3 +1,5 @@
+import NavigationButton from './NavigationButton/NavigationButton'
+
 import styles from './Navigation.module.css'
 
 type NavigationProps = {
@@ -11,16 +13,21 @@ export default function Navigation({
     cardIdx,
     setCardIdx
 }: NavigationProps) {
+    const handleLeftButtonClick = () => {
+        setCardIdx(cardIdx === 0 ? cardsNum - 1 : cardIdx - 1)
+    }
+
+    const handleRightButtonClick = () => {
+        setCardIdx(cardIdx === cardsNum - 1 ? 0 : cardIdx + 1)
+    }
+
     return (
         cardsNum > 1 && (
             <div className={styles.navigationContainer}>
-                <button
-                    className={styles.navigationArrow}
-                    onClick={() => {
-                        setCardIdx(cardIdx === 0 ? cardsNum - 1 : cardIdx - 1)
-                    }}>
-                    {'<'}
-                </button>
+                <NavigationButton
+                    navLabel="<"
+                    handleButtonClick={handleLeftButtonClick}
+                />
                 {new Array(cardsNum).fill(null).map((_, idx) => (
                     <div
                         key={idx}
@@ -29,13 +36,10 @@ export default function Navigation({
                         }
                         onClick={() => setCardIdx(idx)}></div>
                 ))}
-                <button
-                    className={styles.navigationArrow}
-                    onClick={() => {
-                        setCardIdx(cardIdx === cardsNum - 1 ? 0 : cardIdx + 1)
-                    }}>
-                    {'>'}
-                </button>
+                <NavigationButton
+                    navLabel=">"
+                    handleButtonClick={handleRightButtonClick}
+                />
             </div>
         )
     )

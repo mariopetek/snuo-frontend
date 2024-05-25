@@ -1,9 +1,8 @@
-'use client'
 import { Item } from '@/model/item'
-
-import styles from './MenuItem.module.css'
 import ItemButton from '../ItemButton/ItemButton'
 import Connector from '@/components/Connector/Connector'
+
+import styles from './MenuItem.module.css'
 
 type MenuItemProps = {
     item: Item

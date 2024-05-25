@@ -16,8 +16,8 @@
 }
 
 .restaurantInfo > .name {
-    color: var(--primary-color-dark);
-    filter: brightness(2);
+    color: var(--background-color);
+    text-shadow: 0 0 8px var(--text-color);
 }
 
 .restaurantInfo > .address,
