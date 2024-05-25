@@ -19,8 +19,7 @@ export default function Header({ restaurant }: HeaderProps) {
 
     useEffect(() => {
         function handleScroll() {
-            let scrollTop =
-                window.pageYOffset || document.documentElement.scrollTop
+            let scrollTop = window.scrollY || document.documentElement.scrollTop
             if (scrollTop > lastScrollTop) {
                 setIsSticky(false)
             } else {
@@ -68,7 +67,7 @@ export default function Header({ restaurant }: HeaderProps) {
                         title="Narudžba">
                         Narudžba
                     </Link>
-                    {pathname === `/${restaurant.id_objekt}/order` ? (
+                    {pathname.includes(`/${restaurant.id_objekt}/order`) ? (
                         <span className={styles.activeIndicator}></span>
                     ) : null}
                 </span>

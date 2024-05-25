@@ -1,0 +1,21 @@
+.orderDetailsContainer {
+    margin-top: 16px;
+    padding: 16px 24px;
+    background-color: var(--surface-color);
+    box-shadow: var(--box-shadow-medium);
+    border-radius: var(--border-radius);
+    border: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.orderSection p,
+.orderSection ul {
+    font-weight: 500;
+    font-size: 18px;
+}
+
+.orderItemsList {
+    list-style-type: none;
+}

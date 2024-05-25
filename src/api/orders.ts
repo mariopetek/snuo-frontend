@@ -1,4 +1,4 @@
-import { Order } from '@/model/order'
+import { Order, OrderResponse } from '@/model/order'
 
 const ORDERS_URL = '/api/orders'
 
@@ -42,6 +42,17 @@ export async function createOrder(restaurantId: string, order: Order) {
     if (!response.ok) {
         throw new Error('Error creating order')
     }
-    const createdOrder = await response.json()
+    const createdOrderId = (await response.json()) as string
+    return createdOrderId
+}
+
+export async function getCreatedOrderById(
+    restaurantId: string,
+    orderId: string
+) {
+    const response = await fetch(
+        `${process.env.NEXT_PUBLIC_API_URL}${ORDERS_URL}/${restaurantId}/${orderId}`
+    )
+    const createdOrder = (await response.json()) as OrderResponse
     return createdOrder
 }

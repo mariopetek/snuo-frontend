@@ -12,6 +12,7 @@ import { createOrder } from '@/api/orders'
 import { toast } from 'react-toastify'
 
 import styles from './OrderContainer.module.css'
+import { useRouter } from 'next/navigation'
 
 type OrderContainerProps = {
     restaurantId: string
@@ -26,9 +27,11 @@ export default function OrderContainer({
     sideDishes,
     sauces
 }: OrderContainerProps) {
-    const { orderItems, selectedTable } = useOrderContext()
+    const { orderItems, setOrderItems, selectedTable, setSelectedTable } =
+        useOrderContext()
     const [cardIdx, setCardIdx] = useState(0)
     const cardsNum = orderItems.length
+    const router = useRouter()
 
     const totalPrice = useMemo(() => {
         return orderItems.reduce((acc, orderItem) => {
@@ -47,7 +50,7 @@ export default function OrderContainer({
             if (selectedTable === null) {
                 throw new Error('Table not selected')
             }
-            const orderResult = await createOrder(restaurantId, {
+            const orderId = await createOrder(restaurantId, {
                 items: orderItems,
                 table: selectedTable
             })
@@ -55,6 +58,9 @@ export default function OrderContainer({
                 className: styles.toastSuccess,
                 progressClassName: styles.toastSuccessProgress
             })
+            router.push(`/${restaurantId}/order/${orderId}`)
+            setOrderItems([])
+            setSelectedTable(null)
         } catch (error) {
             toast.error('Greška prilikom slanja narudžbe', {
                 className: styles.toastError,
