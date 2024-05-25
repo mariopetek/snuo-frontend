@@ -7,8 +7,9 @@ type ButtonProps = {
 export default function AddButton({ handleButtonClick }: ButtonProps) {
     return (
         <button
+            type="button"
             onClick={handleButtonClick}
-            className={`${styles.button} ${styles.addButton}`}
+            className={styles.button}
             title="Dodaj stavku u narudžbu">
             Dodaj
         </button>

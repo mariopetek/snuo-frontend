@@ -10,7 +10,11 @@ export default function NavigationButton({
     handleButtonClick
 }: NavigationButtonProps) {
     return (
-        <button className={styles.navigationArrow} onClick={handleButtonClick}>
+        <button
+            title="Promijeni stranicu"
+            type="button"
+            className={styles.navigationArrow}
+            onClick={handleButtonClick}>
             {navLabel}
         </button>
     )

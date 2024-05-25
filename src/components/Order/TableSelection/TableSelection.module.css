@@ -1,12 +1,12 @@
 .selectionContainer {
     display: flex;
     flex-direction: column;
+    margin-top: 8px;
 }
 
 .tablesLabel {
     font-size: 18px;
     font-weight: 500;
-    margin-top: 16px;
 }
 
 .tableSelection {

@@ -6,7 +6,10 @@ type MinusButtonProps = {
 
 export default function MinusButton({ handleButtonClick }: MinusButtonProps) {
     return (
-        <button className={styles.minusButton} onClick={handleButtonClick}>
+        <button
+            type="button"
+            className={styles.minusButton}
+            onClick={handleButtonClick}>
             -
         </button>
     )

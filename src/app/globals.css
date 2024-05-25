@@ -1,15 +1,15 @@
 :root {
     --border-radius: 12px;
 
-    --primary-color: #3498db; /* A bright blue color */
+    --primary-color: #3498db;
     --primary-color-light: #5dade2;
     --primary-color-dark: #2c3e50;
 
-    --background-color: #f8f9fa; /* A very light gray for backgrounds */
-    --surface-color: #ffffff; /* Pure white for surfaces */
-    --border-color: #e0e0e0; /* Light gray for borders */
-    --text-color: #333333; /* Dark gray for primary text */
-    --text-color-secondary: #666666; /* Medium gray for secondary text */
+    --background-color: #f8f9fa;
+    --surface-color: #ffffff;
+    --border-color: #e0e0e0;
+    --text-color: #333333;
+    --text-color-secondary: #666666;
 
     --success-color: #2ecc71;
     --success-color-light: #58d68d;

@@ -3,9 +3,26 @@
     flex-direction: column;
 }
 
+.orderHeadingContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 16px;
+}
+
+.totalPriceContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
 .noItemsText {
     font-size: 18px;
     text-align: center;
     margin-top: 24px;
     color: var(--text-color-secondary);
+}
+
+.totalPrice {
+    line-height: 1.2;
 }

@@ -6,7 +6,10 @@ type PlusButtonProps = {
 
 export default function PlusButton({ handleButtonClick }: PlusButtonProps) {
     return (
-        <button className={styles.plusButton} onClick={handleButtonClick}>
+        <button
+            type="button"
+            className={styles.plusButton}
+            onClick={handleButtonClick}>
             +
         </button>
     )

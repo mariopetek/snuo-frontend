@@ -1,18 +1,19 @@
-.button {
-    font-size: 16px;
+.orderButton {
+    font-size: 20px;
     font-weight: 500;
     font-family: inherit;
     border-radius: var(--border-radius);
-    padding: 6px;
+    padding: 10px 12px;
     cursor: pointer;
     transition: all 0.2s ease-in-out;
     box-shadow: var(--box-shadow-light);
-    min-width: 80px;
-    background-color: var(--text-color);
+    max-width: 150px;
+    width: 100%;
+    background-color: var(--primary-color-dark);
     color: var(--surface-color);
-    border: 1px solid var(--text-color-secondary);
+    border: 1px solid var(--primary-color-dark);
 }
 
-.button:hover {
+.orderButton:hover {
     opacity: 0.8;
 }

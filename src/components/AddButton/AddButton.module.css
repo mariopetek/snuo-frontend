@@ -8,14 +8,11 @@
     transition: all 0.2s ease-in-out;
     box-shadow: var(--box-shadow-light);
     min-width: 80px;
+    background-color: var(--primary-color);
+    color: var(--surface-color);
+    border: 1px solid var(--primary-color-light);
 }
 
 .button:hover {
     opacity: 0.8;
-}
-
-.addButton {
-    background-color: var(--primary-color);
-    color: var(--surface-color);
-    border: 1px solid var(--primary-color-light);
 }
