@@ -14,27 +14,29 @@ export default function TableSelection({ tables }: TableSelectionProps) {
             <label className={styles.tablesLabel} htmlFor="tables">
                 Stol:
             </label>
-            <select
-                className={styles.tableSelection}
-                name="tables"
-                id="tables"
-                value={selectedTable === null ? '' : selectedTable.br_stol}
-                onChange={e => {
-                    const selectedTableNumber = Number(e.target.value)
-                    const selectedTable = tables.find(
-                        table => table.br_stol === selectedTableNumber
-                    )
-                    setSelectedTable(
-                        selectedTable === undefined ? null : selectedTable
-                    )
-                }}>
-                <option value="">Odaberi stol</option>
-                {tables.map(table => (
-                    <option key={table.br_stol} value={table.br_stol}>
-                        {table.br_stol}
-                    </option>
-                ))}
-            </select>
+            <div className={styles.selectWrapper}>
+                <select
+                    className={styles.tableSelection}
+                    name="tables"
+                    id="tables"
+                    value={selectedTable === null ? '' : selectedTable.br_stol}
+                    onChange={e => {
+                        const selectedTableNumber = Number(e.target.value)
+                        const selectedTable = tables.find(
+                            table => table.br_stol === selectedTableNumber
+                        )
+                        setSelectedTable(
+                            selectedTable === undefined ? null : selectedTable
+                        )
+                    }}>
+                    <option value="">Odaberi stol</option>
+                    {tables.map(table => (
+                        <option key={table.br_stol} value={table.br_stol}>
+                            {table.br_stol}
+                        </option>
+                    ))}
+                </select>
+            </div>
         </div>
     )
 }

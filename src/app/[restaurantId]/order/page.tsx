@@ -16,13 +16,14 @@ export default async function RestaurantOrderPage({
         restaurantId
     )
     const tables = await getRestaurantTables(restaurantId)
+
     return (
         <>
             <h1>Pregled narudžbe</h1>
             <OrderContainer
+                tables={tables}
                 sideDishes={sideDishes}
                 sauces={sauces}
-                tables={tables}
             />
         </>
     )

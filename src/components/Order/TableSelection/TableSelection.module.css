@@ -23,6 +23,32 @@
     transition: all 0.2s ease-in-out;
     outline: none;
     max-width: 200px;
+    width: 100%;
+
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    position: relative;
+}
+
+.selectWrapper {
+    position: relative;
+    display: inline-block;
+    max-width: 200px;
+    width: 100%;
+}
+
+.selectWrapper::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: 12px;
+    transform: translateY(-50%);
+    width: 0;
+    height: 0;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-top: 6px solid var(--text-color);
 }
 
 .tableSelection[value=''] {
