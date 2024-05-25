@@ -6,6 +6,7 @@ import { usePathname } from 'next/navigation'
 import { FaHome } from 'react-icons/fa'
 
 import styles from './Header.module.css'
+import { useEffect, useState } from 'react'
 
 type HeaderProps = {
     restaurant: RestaurantDetails
@@ -13,8 +14,29 @@ type HeaderProps = {
 
 export default function Header({ restaurant }: HeaderProps) {
     const pathname = usePathname()
+    const [lastScrollTop, setLastScrollTop] = useState(0)
+    const [isSticky, setIsSticky] = useState(false)
+
+    useEffect(() => {
+        function handleScroll() {
+            let scrollTop =
+                window.pageYOffset || document.documentElement.scrollTop
+            if (scrollTop > lastScrollTop) {
+                setIsSticky(false)
+            } else {
+                setIsSticky(true)
+            }
+            setLastScrollTop(scrollTop)
+        }
+
+        window.addEventListener('scroll', handleScroll)
+        return () => {
+            window.removeEventListener('scroll', handleScroll)
+        }
+    }, [lastScrollTop])
+
     return (
-        <header className={styles.header}>
+        <header className={`${styles.header} ${isSticky ? styles.sticky : ''}`}>
             <div className={styles.restaurantInfo}>
                 <h1 className={styles.name}>{restaurant.naziv_objekt}</h1>
                 <span className={styles.address}>

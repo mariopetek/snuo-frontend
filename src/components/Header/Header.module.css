@@ -8,6 +8,12 @@
     box-shadow: var(--box-shadow-medium);
 }
 
+.header.sticky {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+
 .restaurantInfo {
     display: flex;
     flex-direction: column;
