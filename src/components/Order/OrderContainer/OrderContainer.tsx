@@ -5,15 +5,19 @@ import { useState } from 'react'
 import Navigation from '../Navigation/Navigation'
 import { Item } from '@/model/item'
 import OrderSummary from '../OrderSummary/OrderSummary'
+import { Table } from '@/model/table'
+import TableSelection from '../TableSelection/TableSelection'
 
 import styles from './OrderContainer.module.css'
 
 type OrderContainerProps = {
+    tables: Table[]
     sideDishes: Item[]
     sauces: Item[]
 }
 
 export default function OrderContainer({
+    tables,
     sideDishes,
     sauces
 }: OrderContainerProps) {
@@ -27,6 +31,7 @@ export default function OrderContainer({
                 <p className={styles.noItemsText}>Nema stavki u narudžbi</p>
             ) : (
                 <>
+                    <TableSelection tables={tables} />
                     <Navigation
                         cardsNum={cardsNum}
                         cardIdx={cardIdx}
