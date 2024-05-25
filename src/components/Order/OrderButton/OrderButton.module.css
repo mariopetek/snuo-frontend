@@ -1,5 +1,5 @@
 .orderButton {
-    font-size: 20px;
+    font-size: 18px;
     font-weight: 500;
     font-family: inherit;
     border-radius: var(--border-radius);
@@ -16,4 +16,9 @@
 
 .orderButton:hover {
     opacity: 0.8;
+}
+
+.orderButton:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
 }

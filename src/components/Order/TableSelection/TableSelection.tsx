@@ -17,6 +17,7 @@ export default function TableSelection({ tables }: TableSelectionProps) {
             <div className={styles.selectWrapper}>
                 <select
                     title="Odaberi stol"
+                    required
                     className={styles.tableSelection}
                     name="tables"
                     id="tables"

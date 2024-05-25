@@ -7,22 +7,26 @@ import { Item } from '@/model/item'
 import OrderSummary from '../OrderSummary/OrderSummary'
 import { Table } from '@/model/table'
 import TableSelection from '../TableSelection/TableSelection'
+import OrderButton from '../OrderButton/OrderButton'
+import { createOrder } from '@/api/orders'
+import { toast } from 'react-toastify'
 
 import styles from './OrderContainer.module.css'
-import OrderButton from '../OrderButton/OrderButton'
 
 type OrderContainerProps = {
+    restaurantId: string
     tables: Table[]
     sideDishes: Item[]
     sauces: Item[]
 }
 
 export default function OrderContainer({
+    restaurantId,
     tables,
     sideDishes,
     sauces
 }: OrderContainerProps) {
-    const { orderItems } = useOrderContext()
+    const { orderItems, selectedTable } = useOrderContext()
     const [cardIdx, setCardIdx] = useState(0)
     const cardsNum = orderItems.length
 
@@ -38,12 +42,33 @@ export default function OrderContainer({
         }, 0)
     }, [orderItems])
 
+    async function createOrderAction() {
+        try {
+            if (selectedTable === null) {
+                throw new Error('Table not selected')
+            }
+            const orderResult = await createOrder(restaurantId, {
+                items: orderItems,
+                table: selectedTable
+            })
+            toast.success('Narudžba zaprimljena', {
+                className: styles.toastSuccess,
+                progressClassName: styles.toastSuccessProgress
+            })
+        } catch (error) {
+            toast.error('Greška prilikom slanja narudžbe', {
+                className: styles.toastError,
+                progressClassName: styles.toastErrorProgress
+            })
+        }
+    }
+
     return (
         <div className={styles.orderContainer}>
             {cardsNum === 0 ? (
                 <p className={styles.noItemsText}>Nema stavki u narudžbi</p>
             ) : (
-                <form>
+                <form action={createOrderAction}>
                     <div className={styles.orderHeadingContainer}>
                         <OrderButton />
                         <div className={styles.totalPriceContainer}>

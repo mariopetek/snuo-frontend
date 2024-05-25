@@ -26,3 +26,21 @@
 .totalPrice {
     line-height: 1.2;
 }
+
+.toastSuccess {
+    color: var(--surface-color) !important;
+    background-color: var(--success-color-dark) !important;
+}
+
+.toastSuccessProgress {
+    background-color: var(--success-color-light) !important;
+}
+
+.toastError {
+    color: var(--surface-color) !important;
+    background-color: var(--error-color-dark) !important;
+}
+
+.toastErrorProgress {
+    background-color: var(--error-color-light) !important;
+}

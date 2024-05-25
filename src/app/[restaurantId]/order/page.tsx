@@ -24,6 +24,7 @@ export default async function RestaurantOrderPage({
                 tables={tables}
                 sideDishes={sideDishes}
                 sauces={sauces}
+                restaurantId={restaurantId}
             />
         </>
     )

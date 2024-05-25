@@ -7,7 +7,7 @@ export async function getRestaurantMainDishesAndAppetizers(
     restaurantId: string
 ) {
     const response = await fetch(
-        `${process.env.API_URL}${ITEMS_URL}/${restaurantId}/main-and-appetizers`
+        `${process.env.NEXT_PUBLIC_API_URL}${ITEMS_URL}/${restaurantId}/main-and-appetizers`
     )
     const items = (await response.json()) as Item[]
 
@@ -26,7 +26,7 @@ export async function getRestaurantMainDishesAndAppetizers(
 
 export async function getRestaurantSideDishesAndSauces(restaurantId: string) {
     const response = await fetch(
-        `${process.env.API_URL}${ITEMS_URL}/${restaurantId}/side-dishes-and-sauces`
+        `${process.env.NEXT_PUBLIC_API_URL}${ITEMS_URL}/${restaurantId}/side-dishes-and-sauces`
     )
     const items = (await response.json()) as Item[]
 

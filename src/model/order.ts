@@ -1,4 +1,5 @@
 import { Item } from './item'
+import { Table } from './table'
 
 export type OrderAddon = Item & {
     kolicina: number
@@ -10,4 +11,9 @@ export type OrderItem = Item & {
     ukupnaCijena: number
     prilozi: OrderAddon[]
     umaci: OrderAddon[]
+}
+
+export type Order = {
+    items: OrderItem[]
+    table: Table
 }
