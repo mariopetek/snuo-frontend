@@ -15,17 +15,31 @@ export async function createOrder(restaurantId: string, order: Order) {
         })
 
         item.prilozi.forEach(prilog => {
-            orderToSend.items.push({
-                id_stavka: prilog.id_stavka,
-                kolicina: prilog.kolicina
-            })
+            if (orderToSend.items.find(i => i.id_stavka === prilog.id_stavka)) {
+                orderToSend.items.find(
+                    i => i.id_stavka === prilog.id_stavka
+                )!.kolicina += prilog.kolicina
+                return
+            } else {
+                orderToSend.items.push({
+                    id_stavka: prilog.id_stavka,
+                    kolicina: prilog.kolicina
+                })
+            }
         })
 
         item.umaci.forEach(umak => {
-            orderToSend.items.push({
-                id_stavka: umak.id_stavka,
-                kolicina: umak.kolicina
-            })
+            if (orderToSend.items.find(i => i.id_stavka === umak.id_stavka)) {
+                orderToSend.items.find(
+                    i => i.id_stavka === umak.id_stavka
+                )!.kolicina += umak.kolicina
+                return
+            } else {
+                orderToSend.items.push({
+                    id_stavka: umak.id_stavka,
+                    kolicina: umak.kolicina
+                })
+            }
         })
     })
 
