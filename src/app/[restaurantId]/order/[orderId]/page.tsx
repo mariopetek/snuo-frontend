@@ -1,7 +1,10 @@
+'use client'
 import { getCreatedOrderById } from '@/api/orders'
 
 import styles from './page.module.css'
 import Separator from '@/components/Separator/Separator'
+import { useEffect, useState } from 'react'
+import { OrderResponse } from '@/model/order'
 
 type CreatedOrderPageProps = {
     params: {
@@ -10,22 +13,20 @@ type CreatedOrderPageProps = {
     }
 }
 
-export default async function CreatedOrderPage({
-    params
-}: CreatedOrderPageProps) {
+export default function CreatedOrderPage({ params }: CreatedOrderPageProps) {
     const { restaurantId, orderId } = params
-    const createdOrder = await getCreatedOrderById(restaurantId, orderId)
+    const [createdOrder, setCreatedOrder] = useState<OrderResponse | null>(null)
 
-    const formattedTime = new Date(createdOrder.vrijeme).toLocaleString(
-        'hr-HR',
-        {
-            day: 'numeric',
-            month: 'long',
-            year: 'numeric',
-            hour: 'numeric',
-            minute: 'numeric'
+    useEffect(() => {
+        async function getCreatedOrder() {
+            const order = await getCreatedOrderById(restaurantId, orderId)
+            setCreatedOrder(order)
         }
-    )
+
+        getCreatedOrder()
+    }, [restaurantId, orderId])
+
+    if (createdOrder === null) return null
 
     return (
         <>
@@ -33,7 +34,18 @@ export default async function CreatedOrderPage({
             <div className={styles.orderDetailsContainer}>
                 <div className={styles.orderSection}>
                     <h3 className={styles.orderLabel}>Vrijeme:</h3>
-                    <p>{formattedTime}</p>
+                    <p>
+                        {new Date(createdOrder.vrijeme).toLocaleString(
+                            'hr-HR',
+                            {
+                                day: 'numeric',
+                                month: 'long',
+                                year: 'numeric',
+                                hour: 'numeric',
+                                minute: 'numeric'
+                            }
+                        )}
+                    </p>
                 </div>
                 <div className={styles.orderSection}>
                     <h3 className={styles.orderLabel}>Status:</h3>
