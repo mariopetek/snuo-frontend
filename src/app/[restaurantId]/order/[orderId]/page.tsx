@@ -38,7 +38,7 @@ export default function CreatedOrderPage({ params }: CreatedOrderPageProps) {
                         {new Date(createdOrder.vrijeme).toLocaleString(
                             'hr-HR',
                             {
-                                timeZone: 'Europe/Zagreb',
+                                timeZone: 'Europe/Berlin',
                                 day: 'numeric',
                                 month: 'long',
                                 year: 'numeric',
